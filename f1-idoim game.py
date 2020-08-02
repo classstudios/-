@@ -345,8 +345,8 @@ if __name__ == "__main__":
         idiom_data,valid_idioms = readData('data.txt')
         ai_answer = None
         get_audio(in_path)
-        wsParam = Ws_Param(APPID='5f09e790', APIKey='69000af7b9794e39688630d4a62002e5',
-                       APISecret='e88504cabbb8646417da0ee975ed84e3',
+        wsParam = Ws_Param(APPID='', APIKey='',
+                       APISecret='',
                        AudioFile=r'input.wav')
         websocket.enableTrace(False)
         wsUrl = wsParam.create_url()
@@ -361,16 +361,14 @@ if __name__ == "__main__":
             answers = idiom_data[idiom[-1]]
             answer = random.choice(answers)
             ai_answer = answer.copy()
-            wsParam2 = Ws_Param2(APPID='5f09e790', APIKey='69000af7b9794e39688630d4a62002e5',
-                           APISecret='e88504cabbb8646417da0ee975ed84e3',
+            wsParam2 = Ws_Param2(APPID='', APIKey='',
+                           APISecret='',
                            Text="我接："+ai_answer[0])
             print("我接：",ai_answer[0])
         except Exception as e:
-            wsParam2 = Ws_Param2(APPID='5f09e790', APIKey='69000af7b9794e39688630d4a62002e5',
-                           APISecret='e88504cabbb8646417da0ee975ed84e3',
-                           #Text="你说的是神马成语！不会接")
-                           Text="请在B站关注我，回复“成语接龙”即可获得源代码，麻烦观众老爷长按右下的点赞按钮持续2秒,编程UP做视频不光要剪辑，还需要写代码很辛苦呢。大家对我的支持就是我做视频的动力，么么哒")
-            #print("你说的是神马成语！不会接！")
+            wsParam2 = Ws_Param2(APPID='', APIKey='',
+                           APISecret='',
+                           Text="你说的是神马成语！不会接")
         websocket.enableTrace(False)
         wsUrl2 = wsParam2.create_url()
         ws2 = websocket.WebSocketApp(wsUrl2, on_message=on_message2, on_error=on_error2, on_close=on_close2)
